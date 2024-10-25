@@ -1,0 +1,324 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f0f4f8, #dce7f4);
+    color: #333;
+    overflow-x: hidden;
+    transition: background 0.3s;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: linear-gradient(135deg, #1f1f1f, #343a40);
+    color: #f1f1f1;
+}
+
+header, footer, .glass {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 90%;
+}
+
+header h1, nav ul li a, footer p {
+    color: inherit;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff7e67;
+}
+
+/* Hero Section */
+.hero-glass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    background: linear-gradient(to bottom right, rgba(255, 215, 0, 0.3), rgba(255, 105, 180, 0.3));
+    color: #fff;
+    text-align: center;
+}
+
+.cta-button {
+    background: linear-gradient(145deg, #ff7e67, #ff9471);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin-top: 20px;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* Input Styles */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+}
+
+input {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    color: #333;
+    outline: none;
+}
+
+/* Card Styles */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    flex: 1 1 30%;
+    text-align: center;
+    color: inherit;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Result Card */
+.result-card {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    color: #e67e22;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Footer */
+footer p {
+    color: #666;
+}
+
+/* Toggle Switch */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 34px;
+    transition: all 0.4s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: #333;
+    border-radius: 50%;
+    transition: all 0.4s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* When checked (Dark Mode) */
+input:checked + .slider {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+    background-color: #f1f1f1;
+}
+/* Floating Button Styles */
+.floating-button {
+    position: fixed;
+    bottom: 80px; /* Position from the bottom */
+    right: 20px; /* Position from the right */
+    background-color: #ff7e67;; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 20px; /* Round corners */
+    padding: 1px 3px; /* Padding */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    transition: background-color 0.3s, transform 0.3s; /* Transition effects */
+    z-index: 1000;
+}
+
+.floating-button:hover {
+    background-color: #FFFFFF00; 
+    border-color: #ffffff;
+    color: #ff7e67;/* Darker green on hover */
+    transform: scale(1.05); /* Slightly increase size on hover */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 999; /* Sit on top */
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+    backdrop-filter: blur(10px); /* Blur effect */
+}
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0.8); /* Glass effect */
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 40px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Footer Styling */
+.footer {
+    position: fixed; /* Keeps footer at the bottom */
+    bottom: -25px; /* Stick to the bottom */
+    box-sizing: initial;
+    width: 100%;
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slightly more opaque for a modern look */
+    backdrop-filter: blur(10px); /* Blur effect for the background content */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    padding: 18px; /* Padding for spacing */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+    z-index: 1000; /* Ensure it appears above other content */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for background and text color */
+}
+
+/* Dark Mode Styles for Footer */
+body.dark-mode .footer {
+    background-color: rgba(30, 30, 30, 0.9); /* Darker background for dark mode */
+    color: white; /* White text for dark mode */
+}
+
+/* Icon Styling */
+.footer-icon {
+    color: #000; /* Change icon color to black */
+    font-size: 24px;
+    text-decoration: none;
+    flex: 1;
+    text-align: center;
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+/* Hover Effect for Icons */
+.footer-icon:hover {
+    color: #007BFF; /* Change icon color on hover for modern interactivity */
+}
+
+/* Dark Mode Styles for Footer Icons */
+body.dark-mode .footer-icon {
+    color: #fff; /* Change icon color to white in dark mode */
+}
+
+.logo {
+    height: 40px; /* Adjust size as needed */
+    transition: opacity 0.3s ease; /* Smooth transition for logo change */
+}
+
+/* Additional styles for logo in dark mode */
+body.dark-mode .logo {
+    content: url('https://img.icons8.com/material/24/google-wallet.png');
+}
+.img2 {
+    display: flex;
+    justify-content: center; /* Center the images */
+    gap: 20px; /* Adjust gap between images */
+    align-items: center;
+    width: 100%; /* Full container width */
+}
+
+.img2 a img {
+    max-width: 150px; /* Adjust image size */
+    height: auto; /* Maintain aspect ratio */
+}
+.mortgage-calc-btn {
+    width: 2px;
+    height: 2px;
+}
