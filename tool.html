@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="IMAGES\logo.png" type="image/png">
-  <title>Settings</title>
+  <title>LumeTool</title>
   <style>
 /* General Reset */
 * {
@@ -45,7 +45,6 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #000;
 }
 
 nav ul {
@@ -71,7 +70,7 @@ nav ul li a:hover {
     justify-content: center;
     height: 60vh;
     background: linear-gradient(to bottom right, rgba(255, 215, 0, 0.3), rgba(255, 105, 180, 0.3));
-    color: #000000;
+    color: #fff;
     text-align: center;
 }
 
@@ -112,7 +111,6 @@ input {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    
 }
 
 .card {
@@ -124,7 +122,6 @@ input {
     text-align: center;
     color: inherit;
     transition: transform 0.3s;
-    
 }
 
 .card:hover {
@@ -145,7 +142,6 @@ input {
 /* Footer */
 footer p {
     color: #666;
-    margin-bottom: 10px;
 }
 
 /* Toggle Switch */
@@ -229,7 +225,7 @@ input:checked + .slider:before {
 
 /* Modal Styles */
 .modal {
-    display: none; /* Hidden by default */
+
     position: fixed;
     z-index: 999; /* Sit on top */
     padding-top: 100px;
@@ -339,7 +335,7 @@ body.dark-mode .logo {
 .popup-container {
     display: none; /* Initially hidden */
     position: fixed; /* Fixed position for popup */
-    top: 50%; /* Center vertically */
+    top: 10%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust position to center */
     background: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
@@ -400,7 +396,6 @@ body.dark-mode .logo {
       }
   
       /* Calculator Container */
-      /* Calculator Container */
       .calculator-container {
         background: rgba(255, 255, 255, 0.1); /* Lighter background for contrast */
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
@@ -417,7 +412,7 @@ body.dark-mode .logo {
       }
   
       h2 {
-    
+        color: #ffffff;
         font-size: 28px; /* Slightly larger font for prominence */
         margin-bottom: 20px;
       }
@@ -438,6 +433,7 @@ body.dark-mode .logo {
   
       .calculate-button {
         margin-top: 20px;
+        margin-bottom: 1px;
         padding: 14px;
         width: 100%;
         font-size: 18px;
@@ -464,36 +460,17 @@ body.dark-mode .logo {
       .toggle-container{
         margin: 2px;
       }
+
       .expense-container{
         margin: 2px;
       }
-      body.dark-mode input {
-        background: rgba(255, 255, 255, 0.2);
-        color: #f1f1f1; /* Adjust color to fit dark mode */
-    }
-    body.dark-mode .cta-button {
-        color: #333; /* Switch to darker text in dark mode */
-    }
-    body.dark-mode footer p {
-        color: #f1f1f1; /* Light color for dark mode */
-    }
-    body.dark-mode .card, 
-    body.dark-mode .result-card, 
-    body.dark-mode .hero-glass {
-        color: #f1f1f1;
-    }
-    nav ul li a {
-        color: inherit;
-    }
-    
-        
   </style>
 </head>
 <body>
+ 
   
   <!-- Mortgage Calculator Modal -->
   <div id="mortgage-modal" class="modal">
-      <a href="index.html" class="footer-icon" id="home-button"><img  src="https://img.icons8.com/metro/36/interior.png" alt="Home Icon"></a>
       <div class="calculator-container">
         <h2>South Africa Tax Calculator</h2>
         <div class="toggle-container">
@@ -549,10 +526,7 @@ body.dark-mode .logo {
         <button class="calculate-button" onclick="calculateTax()">Calculate Tax</button>
         <div class="progress-bar" id="progressBar"></div>
         <div class="result" id="taxResult"></div>
-        <p></p>
-        <p>2024, hierarchy digital. All rights reserved</p>
-        <p>we are not responsible for any miscalculations</p>
-        <p>Visit a financial advisor for more.</p>
+
         <a href="index.html" class="footer-icon" id="home-button"><img src="https://img.icons8.com/metro/36/interior.png" alt="Home Icon"></a>
       </div>
   </div>

@@ -61,3 +61,88 @@ calculateBtn.onclick = function() {
 
     monthlyPaymentDisplay.innerText = `Estimated Monthly Payment: R ${monthlyPayment.toFixed(2)}`;
 }
+
+function togglePopup() {
+    const popupContainer = document.getElementById("popupContainer");
+    const popupOverlay = document.getElementById("popupOverlay");
+    const isVisible = popupContainer.style.display === "block";
+
+    popupContainer.style.display = isVisible ? "none" : "block";
+    popupOverlay.style.display = isVisible ? "none" : "block";
+  }
+  
+  function calculateTax() {
+    const incomeToggle = document.getElementById("incomeToggle").value;
+    const incomeInput = parseFloat(document.getElementById("incomeInput").value) || 0;
+    const medicalAidInput = parseFloat(document.getElementById("medicalAidInput").value) || 0;
+    const medicalAidToggle = document.getElementById("medicalAidToggle").value;
+  
+    let yearlyIncome, yearlyMedicalAid;
+  
+    if (medicalAidToggle === "monthly") {
+      yearlyMedicalAid = medicalAidInput * 12;
+    } else {
+      yearlyMedicalAid = medicalAidInput;
+    }
+  
+    if (incomeToggle === "monthly") {
+      yearlyIncome = incomeInput * 12;
+    } else {
+      yearlyIncome = incomeInput;
+    }
+  
+    const taxableIncome = yearlyIncome;
+    const taxRate = (taxableIncome > 237100) ? 0.26 : 0.18;
+    let taxAmount = taxableIncome * taxRate;
+  
+    const donationsCheckbox = document.getElementById("donations");
+    let donationAmount = 0;
+  
+    if (donationsCheckbox.checked) {
+      donationAmount = parseFloat(prompt("Enter donation amount:")) || 0;
+    }
+  
+    const pensionCheckbox = document.getElementById("pension");
+    let pensionAmount = 0;
+  
+    if (pensionCheckbox.checked) {
+      pensionAmount = yearlyIncome * (parseFloat(prompt("Enter pension fund percentage (e.g., '10' for 10%):")) || 0) / 100;
+    }
+  
+    const uifCheckbox = document.getElementById("uif");
+    let uifAmount = 0;
+  
+    if (uifCheckbox.checked) {
+      uifAmount = yearlyIncome * 0.01;
+    }
+  
+    const carRepayments = (parseFloat(document.getElementById("carRepayments").value) || 0) * 12;
+    const houseRepayments = (parseFloat(document.getElementById("houseRepayments").value) || 0) * 12;
+    const cellphoneRepayments = (parseFloat(document.getElementById("cellphoneRepayments").value) || 0) * 12;
+  
+    const deductions = pensionAmount + donationAmount + yearlyMedicalAid + uifAmount + carRepayments + houseRepayments + cellphoneRepayments;
+  
+    const netIncome = taxableIncome - taxAmount - deductions;
+    const monthlyNetIncome = netIncome / 12;
+    const monthlyDeductions = deductions / 12;
+    const grossIncome = taxableIncome - taxAmount;
+    const monthlyGross = grossIncome / 12;
+  
+    const taxResult = document.getElementById("taxResult");
+    const progressBar = document.getElementById("progressBar");
+  
+    taxResult.innerHTML = `
+      <strong>Taxable income (yearly):</strong> R${taxableIncome.toFixed(2)}<br>
+      <strong>Total tax (yearly):</strong> R${taxAmount.toFixed(2)}<br>
+      <strong>Gross Income (yearly):</strong> R${grossIncome.toFixed(2)}<br>
+      <strong>Gross Income (monthly):</strong> R${monthlyGross.toFixed(2)}<br>
+      <strong>Total deductions (yearly):</strong> R${deductions.toFixed(2)}<br>
+      <strong>Total deductions (monthly):</strong> R${monthlyDeductions.toFixed(2)}<br>
+      <strong>Take Home (yearly):</strong> R${netIncome.toFixed(2)}<br>
+      <strong>Take Home (monthly):</strong> R${monthlyNetIncome.toFixed(2)}
+    `;
+  
+    progressBar.style.width = "100%";
+    setTimeout(() => { progressBar.style.width = "0"; }, 2000);
+  }
+ 
